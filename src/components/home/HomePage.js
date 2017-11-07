@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link} from 'react-router';
-import logo from '/src/assets/images/logo.jpg';
 
 class HomePage extends React.Component {
   render() {
@@ -10,7 +9,7 @@ class HomePage extends React.Component {
         </div>
         <div className="panel-body"  >
           <div className="row" >
-            <img src={logo}
+            <img src={require("../../assets/images/logo.jpg")}
                  className="img-responsive center-block"
                  style={{maxHeight:'300px', paddingBottom:'50px'}}/>
           </div>
