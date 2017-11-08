@@ -14,10 +14,10 @@ class CrawledDataPage extends React.Component {
 
   render() {
     return (
-      <div className='panel panel-info' style={{width: "auto", height: "auto"}}>
-        <div className='panel-heading' style={{fontSize: ""}}>
+      <div className="panel panel-info" style={{width: "auto", height: "auto"}}>
+        <div className="panel-heading" style={{fontSize: ""}}>
           {this.props.pageTitle}
-          <button className='btn btn-primary' style={{float: "right"}} onClick={this.recrawlData}>
+          <button className="btn btn-primary" style={{float: "right"}} onClick={this.recrawlData}>
             Recrawl
           </button>
         </div>
@@ -29,11 +29,11 @@ class CrawledDataPage extends React.Component {
               label="URL"
               onChange={this.onChange}
               error={this.state.errors}
-              width='200px'
+              width="200px"
             />
             <input
               type="button"
-              value='Save'
+              value="Save"
               className="btn btn-primary"
               onClick={this.onSave}
             />
