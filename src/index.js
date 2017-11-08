@@ -7,8 +7,12 @@ import { Router, browserHistory } from 'react-router';
 import routes from './routes';
 import './styles/styles.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import {loadCourses} from "./actions/courseActions";
+import {saveAndLoadCrawledData} from "./actions/crawledDataActions";
 
 const store = configureStore();
+store.dispatch(saveAndLoadCrawledData());
+store.dispatch(loadCourses());
 
 render(
   <Provider store={store}>

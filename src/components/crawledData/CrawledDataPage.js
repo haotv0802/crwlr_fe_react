@@ -1,5 +1,9 @@
 import React, {PropTypes} from 'react';
 import TextInput from "../common/TextInput";
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import * as crawledDataActions from '../../actions/crawledDataActions';
+
 
 class CrawledDataPage extends React.Component {
   constructor(props, context) {
@@ -13,6 +17,8 @@ class CrawledDataPage extends React.Component {
   }
 
   render() {
+    const {crawledData} = this.props;
+    const {courses} = this.props;
     return (
       <div className="panel panel-info" style={{width: "auto", height: "auto"}}>
         <div className="panel-heading" style={{fontSize: ""}}>
@@ -45,7 +51,9 @@ class CrawledDataPage extends React.Component {
   }
 
   onSave() {
-    console.log("On Save");
+    this.props.actions.saveAndLoadCrawledData();
+    console.log(this.props.crawledData);
+    console.log(this.props.courses);
   }
 
   onChange() {
@@ -62,11 +70,28 @@ class CrawledDataPage extends React.Component {
 }
 
 CrawledDataPage.propTypes = {
-  pageTitle: PropTypes.string.isRequired
+  pageTitle: PropTypes.string.isRequired,
+  actions: PropTypes.object.isRequired,
+  crawledData: PropTypes.array,
+  courses: PropTypes.array.isRequired
+
 };
 
 CrawledDataPage.defaultProps = {
   pageTitle: "Crawled Data"
 };
 
-export default CrawledDataPage;
+function mapStateToProps(state, ownProps) {
+  return {
+    crawledData: state.crawledData,
+    courses: state.courses
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(crawledDataActions, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CrawledDataPage);
