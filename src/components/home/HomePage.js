@@ -1,11 +1,18 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import {Link} from 'react-router';
 
 class HomePage extends React.Component {
+
+  constructor(props, context) {
+    super(props, context);
+  }
+
   render() {
+    const pageTitle = 'Home Page';
     return (
       <div className="panel panel-info">
         <div className="panel-heading">
+          {this.props.pageTitle}
         </div>
         <div className="panel-body"  >
           <div className="row" >
@@ -26,5 +33,13 @@ class HomePage extends React.Component {
     );
   }
 }
+
+HomePage.propTypes = {
+  pageTitle: PropTypes.string.isRequired
+};
+
+HomePage.defaultProps = {
+  pageTitle: "Home Page"
+};
 
 export default HomePage;
