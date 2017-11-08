@@ -1,9 +1,15 @@
 import React, {PropTypes} from 'react';
+import TextInput from "../common/TextInput";
 
 class CrawledDataPage extends React.Component {
   constructor(props, context) {
     super(props, context);
+    this.state = {
+      recrawlOpen: false,
+      errors: {}
+    };
     this.recrawlData = this.recrawlData.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
 
   render() {
@@ -15,12 +21,30 @@ class CrawledDataPage extends React.Component {
             Recrawl
           </button>
         </div>
+        {this.state.recrawlOpen ===  true ?
+          <form>
+            <h1>Manage Course</h1>
+            <TextInput
+              name="url"
+              label="Title"
+              onChange={this.onChange}
+              error={this.state.errors}
+            />
+          </form> : <form>
+            <h1>Manage Course</h1>
+          </form>
+        }
       </div>
     );
   }
 
+  onChange() {
+    console.log("on change");
+  }
+
   recrawlData() {
-    console.log("Recrawling Data");
+    this.state.recrawlOpen = !this.state.recrawlOpen;
+    console.log(this.state.recrawlOpen);
   }
 }
 
