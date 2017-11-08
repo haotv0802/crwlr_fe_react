@@ -8,7 +8,6 @@ class HomePage extends React.Component {
   }
 
   render() {
-    const pageTitle = 'Home Page';
     return (
       <div className="panel panel-info">
         <div className="panel-heading">
