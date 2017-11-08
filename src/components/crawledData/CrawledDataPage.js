@@ -5,11 +5,11 @@ class CrawledDataPage extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      recrawlOpen: false,
-      errors: {}
+      recrawlOpen: false
     };
     this.recrawlData = this.recrawlData.bind(this);
     this.onChange = this.onChange.bind(this);
+    this.onSave = this.onSave.bind(this);
   }
 
   render() {
@@ -23,19 +23,29 @@ class CrawledDataPage extends React.Component {
         </div>
         {this.state.recrawlOpen ===  true ?
           <form>
-            <h1>Manage Course</h1>
+            <h1>Add Info</h1>
             <TextInput
               name="url"
-              label="Title"
+              label="URL"
               onChange={this.onChange}
               error={this.state.errors}
+              width='200px'
             />
-          </form> : <form>
-            <h1>Manage Course</h1>
+            <input
+              type="button"
+              value='Save'
+              className="btn btn-primary"
+              onClick={this.onSave}
+            />
           </form>
+          : ''
         }
       </div>
     );
+  }
+
+  onSave() {
+    console.log("On Save");
   }
 
   onChange() {
@@ -43,7 +53,10 @@ class CrawledDataPage extends React.Component {
   }
 
   recrawlData() {
-    this.state.recrawlOpen = !this.state.recrawlOpen;
+    // this.state.recrawlOpen = !this.state.recrawlOpen;
+    this.setState( prevState => ({
+      recrawlOpen: !prevState.recrawlOpen
+    }));
     console.log(this.state.recrawlOpen);
   }
 }

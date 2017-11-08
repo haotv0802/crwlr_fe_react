@@ -1,8 +1,8 @@
 import React, {PropTypes} from 'react';
 
-const TextInput = ({name, label, onChange, placeholder, value, error}) => {
+const TextInput = ({name, label, width, onChange, placeholder, value, error}) => {
   let wrapperClass = 'form-group';
-  if (error && error.length > 0) {
+  if (error !== undefined && error.length > 0) {
     wrapperClass += " " + 'has-error';
   }
 
@@ -17,8 +17,9 @@ const TextInput = ({name, label, onChange, placeholder, value, error}) => {
           placeholder={placeholder}
           value={value}
           onChange={onChange}
+          style={{width: width}}
         />
-        {error & <div className="alert alert-danger">{error}</div>}
+        {/*{error & <div className="alert alert-danger">{error}</div>}*/}
       </div>
     </div>
   );
