@@ -3,6 +3,7 @@ import React, {PropTypes} from 'react';
 class CrawledDataPage extends React.Component {
   constructor(props, context) {
     super(props, context);
+    this.recrawlData = this.recrawlData.bind(this);
   }
 
   render() {
@@ -10,7 +11,7 @@ class CrawledDataPage extends React.Component {
       <div className='panel panel-info' style={{width: "auto", height: "auto"}}>
         <div className='panel-heading' style={{fontSize: ""}}>
           {this.props.pageTitle}
-          <button className='btn btn-primary' style={{float: "right"}}>
+          <button className='btn btn-primary' style={{float: "right"}} onClick={this.recrawlData}>
             Recrawl
           </button>
         </div>
@@ -18,6 +19,9 @@ class CrawledDataPage extends React.Component {
     );
   }
 
+  recrawlData() {
+    console.log("Recrawling Data");
+  }
 }
 
 CrawledDataPage.propTypes = {
