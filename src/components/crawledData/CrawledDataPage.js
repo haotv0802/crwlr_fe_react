@@ -18,7 +18,8 @@ class CrawledDataPage extends React.Component {
 
   render() {
     const {crawledData} = this.props;
-    const {courses} = this.props;
+    console.log("render:");
+    console.log(crawledData);
     return (
       <div className="panel panel-info" style={{width: "auto", height: "auto"}}>
         <div className="panel-heading" style={{fontSize: ""}}>
@@ -46,13 +47,27 @@ class CrawledDataPage extends React.Component {
           </form>
           : ''
         }
+        <table className="table">
+          <thead>
+          <tr>
+            <th>Title</th>
+          </tr>
+          </thead>
+          <tbody>
+          {crawledData.map((data, index) =>
+            <tr key={index}>
+              <td><a href="#" target="_bank">{data.name}</a></td>
+            </tr>
+          )}
+          </tbody>
+        </table>
+
       </div>
     );
   }
 
   onSave() {
     this.props.actions.saveAndLoadCrawledData();
-    console.log(this.props.crawledData);
   }
 
   onChange() {
