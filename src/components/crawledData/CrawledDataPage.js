@@ -17,9 +17,11 @@ class CrawledDataPage extends React.Component {
   }
 
   render() {
-    const {crawledData} = this.props;
-    console.log("render:");
+    const {crawledData, courses} = this.props;
+    console.log("crawled data:");
     console.log(crawledData);
+    console.log("courses: ");
+    console.log(courses);
     return (
       <div className="panel panel-info" style={{width: "auto", height: "auto"}}>
         <div className="panel-heading" style={{fontSize: ""}}>
@@ -86,7 +88,8 @@ class CrawledDataPage extends React.Component {
 CrawledDataPage.propTypes = {
   pageTitle: PropTypes.string.isRequired,
   actions: PropTypes.object.isRequired,
-  crawledData: PropTypes.array.isRequired
+  crawledData: PropTypes.array.isRequired,
+  courses: PropTypes.array.isRequired
 
 };
 
@@ -96,7 +99,8 @@ CrawledDataPage.defaultProps = {
 
 function mapStateToProps(state, ownProps) {
   return {
-    crawledData: state.crawledData
+    crawledData: state.crawledData,
+    courses: state.courses
   };
 }
 
