@@ -8,8 +8,8 @@ export function saveAndLoadCrawledDataSuccess(crawledData) {
 export function saveAndLoadCrawledData() {
   return dispatch => {
     return crawledDataApi.getAllCrawledData().then (
-      crawledData => {
-        dispatch(saveAndLoadCrawledDataSuccess(crawledData));
+      res => {
+        dispatch(saveAndLoadCrawledDataSuccess(res.data));
       }
     ).catch(
       error => {
