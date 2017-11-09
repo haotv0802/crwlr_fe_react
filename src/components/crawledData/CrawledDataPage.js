@@ -53,7 +53,6 @@ class CrawledDataPage extends React.Component {
   onSave() {
     this.props.actions.saveAndLoadCrawledData();
     console.log(this.props.crawledData);
-    console.log(this.props.courses);
   }
 
   onChange() {
@@ -72,8 +71,7 @@ class CrawledDataPage extends React.Component {
 CrawledDataPage.propTypes = {
   pageTitle: PropTypes.string.isRequired,
   actions: PropTypes.object.isRequired,
-  crawledData: PropTypes.array,
-  courses: PropTypes.array.isRequired
+  crawledData: PropTypes.array.isRequired
 
 };
 
@@ -83,8 +81,7 @@ CrawledDataPage.defaultProps = {
 
 function mapStateToProps(state, ownProps) {
   return {
-    crawledData: state.crawledData,
-    courses: state.courses
+    crawledData: state.crawledData
   };
 }
 

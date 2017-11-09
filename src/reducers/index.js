@@ -1,9 +1,7 @@
 import {combineReducers} from 'redux';
-import crawledDataReducer from './crawledDataReducers';
-import courses from './courseReducer';
+import crawledData from './crawledDataReducer';
 
 const rootReducer = combineReducers({
-  courses,
-  crawledDataReducer
+  crawledData
 });
 export default rootReducer;
