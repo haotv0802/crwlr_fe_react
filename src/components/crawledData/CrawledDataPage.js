@@ -3,7 +3,7 @@ import TextInput from "../common/TextInput";
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as crawledDataActions from '../../actions/crawledDataActions';
-import {Bar, Line, Pie} from 'react-chartjs-2';
+import Chart from './Chart';
 
 class CrawledDataPage extends React.Component {
   constructor(props, context) {
@@ -22,30 +22,7 @@ class CrawledDataPage extends React.Component {
     console.log(crawledData);
     console.log("courses: ");
     console.log(courses);
-    var chartData = {
-      labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-      datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)'
-        ],
-        borderColor: [
-          'rgba(255,99,132,1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)'
-        ],
-        borderWidth: 1
-      }]
-    };
+
     return (
       <div className="panel panel-info" style={{width: "auto", height: "auto"}}>
         <div className="panel-heading" style={{fontSize: ""}}>
@@ -87,22 +64,7 @@ class CrawledDataPage extends React.Component {
           )}
           </tbody>
         </table>
-        <Bar
-          data={chartData}
-          width={100}
-          height={50}
-          options={{
-            title: {
-              display: this.props.displayTitle,
-              text: this.props.displayText,
-              fontSize: 25
-            },
-            legend: {
-              display: this.props.displayLegend,
-              position: this.props.legendPosition
-            }
-          }}
-        />
+        <Chart/>
       </div>
     );
   }
@@ -129,15 +91,10 @@ CrawledDataPage.propTypes = {
   actions: PropTypes.object.isRequired,
   crawledData: PropTypes.array.isRequired,
   courses: PropTypes.array.isRequired
-
 };
 
 CrawledDataPage.defaultProps = {
-  pageTitle: "Crawled Data",
-  displayTitle: true,
-  displayText: 'Title HAHAHA',
-  displayLegend: true,
-  legendPosition: 'right'
+  pageTitle: "Crawled Data"
 };
 
 function mapStateToProps(state, ownProps) {
