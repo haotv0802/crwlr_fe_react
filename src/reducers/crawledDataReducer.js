@@ -3,7 +3,7 @@ import initialState from './initialState';
 
 export default function courseReducer(state = initialState.crawledData, action) {
   switch(action.type) {
-    case types.SAVE_AND_LOAD_CRAWLED_DATA:
+    case types.SAVE_AND_LOAD_CRAWLED_DATA_SUCCESS:
       return action.crawledData;
     default:
       return state;

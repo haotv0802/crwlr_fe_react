@@ -12,7 +12,8 @@ class CrawledDataApi {
   }
 
   static getAllCrawledData() {
-    return HttpClient.get('http://localhost:9000/crwlr_be/svc/crawler/crawledData');
+      return HttpClient.get('http://localhost:9000/crwlr_be/svc/crawler/crawledData');
+
     // return axios.get('http://localhost:9000/crwlr_be/svc/crawler/crawledData');
     // return request({
     //   url: '/svc/crawler/crawledData',

@@ -1,4 +1,5 @@
 export default {
   crawledData: [],
-  courses: []
+  courses: [],
+  ajaxCallsInProgress: 0
 };
