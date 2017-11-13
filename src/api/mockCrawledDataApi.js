@@ -12,7 +12,14 @@ class CrawledDataApi {
   }
 
   static getAllCrawledData() {
-      return HttpClient.get('http://localhost:9000/crwlr_be/svc/crawler/crawledData');
+    return new Promise((resolve, reject) => {
+      if (true) {
+        reject(`error happens.......`);
+      }
+      setTimeout(() =>{
+        resolve(HttpClient.get('http://localhost:9000/crwlr_be/svc/crawler/crawledData'));
+      }, 1);
+    });
 
     // return axios.get('http://localhost:9000/crwlr_be/svc/crawler/crawledData');
     // return request({

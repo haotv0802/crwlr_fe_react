@@ -4,6 +4,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as crawledDataActions from '../../actions/crawledDataActions';
 import Chart from './Chart';
+import toastr from 'toastr';
 
 class CrawledDataPage extends React.Component {
   constructor(props, context) {
@@ -71,7 +72,13 @@ class CrawledDataPage extends React.Component {
   }
 
   onSave() {
-    this.props.actions.saveAndLoadCrawledData();
+    this.props.actions.saveAndLoadCrawledData()
+      .catch(error => {
+        console.log("error-----: ")
+        console.log(error);
+        toastr.success("sdfds");
+        toastr.error(error);
+      });
   }
 
   onChange() {
