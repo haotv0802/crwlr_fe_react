@@ -13,9 +13,9 @@ class CrawledDataApi {
 
   static getAllCrawledData() {
     return new Promise((resolve, reject) => {
-      if (true) {
-        reject(`error happens.......`);
-      }
+      // if (true) {
+      //   reject(`error happens.......`);
+      // }
       setTimeout(() =>{
         resolve(HttpClient.get('http://localhost:9000/crwlr_be/svc/crawler/crawledData'));
       }, 1);

@@ -73,11 +73,15 @@ class CrawledDataPage extends React.Component {
 
   onSave() {
     this.props.actions.saveAndLoadCrawledData()
+      .then(() => {
+
+      })
       .catch(error => {
-        console.log("error-----: ")
-        console.log(error);
-        toastr.success("sdfds");
+        // console.log("error-----: ");
+        // console.log(error);
+        // toastr.success("sdfds");
         toastr.error(error);
+
       });
   }
 
