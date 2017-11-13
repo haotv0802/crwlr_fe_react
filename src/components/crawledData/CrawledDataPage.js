@@ -3,13 +3,14 @@ import TextInput from "../common/TextInput";
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as crawledDataActions from '../../actions/crawledDataActions';
-
+import Chart from './Chart';
 
 class CrawledDataPage extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      recrawlOpen: false
+      recrawlOpen: false,
+      chartData: {}
     };
     this.recrawlData = this.recrawlData.bind(this);
     this.onChange = this.onChange.bind(this);
@@ -22,6 +23,7 @@ class CrawledDataPage extends React.Component {
     console.log(crawledData);
     console.log("courses: ");
     console.log(courses);
+
     return (
       <div className="panel panel-info" style={{width: "auto", height: "auto"}}>
         <div className="panel-heading" style={{fontSize: ""}}>
@@ -63,7 +65,7 @@ class CrawledDataPage extends React.Component {
           )}
           </tbody>
         </table>
-
+        <Chart chartData={this.state.chartData} legendPosition='bottom'/>
       </div>
     );
   }
@@ -83,6 +85,39 @@ class CrawledDataPage extends React.Component {
     }));
     console.log(this.state.recrawlOpen);
   }
+
+  componentWillMount() {
+    this.getChartData();
+  }
+
+  getChartData() {
+    this.setState({
+      chartData: {
+        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        datasets: [{
+          label: 'Population',
+          data: [12, -19, 3, -5, 2, 3],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255,99,132,1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+          ],
+          borderWidth: 1
+        }]
+      }
+    });
+  }
 }
 
 CrawledDataPage.propTypes = {
@@ -90,7 +125,6 @@ CrawledDataPage.propTypes = {
   actions: PropTypes.object.isRequired,
   crawledData: PropTypes.array.isRequired,
   courses: PropTypes.array.isRequired
-
 };
 
 CrawledDataPage.defaultProps = {
